@@ -20,14 +20,6 @@ app.use(express.static('public'));
 // var controller = require('./controllers/{file}.js');
 // app.use('/{url}', ontroller);
 
-/****** LISTENERS ******/
-
-app.get('/', function(req, res) {
-  res.render('index.ejs', {
-    //currentUser: req.session.currentUser
-  });
-});
-
 mongoose.connect(mongoDBURI);
 mongoose.connection.once('open', function() {
   console.log("Connected to mongo");
