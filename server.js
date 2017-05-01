@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 /****** MODELS ******/
 
@@ -14,11 +15,16 @@ var mongoDBURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/got'
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.static('public'));
+app.use(session({
+  secret: "kungfukenny",
+  resave: false,
+  saveUninitialized: false
+}));
 
 /****** CONTROLLERS ******/
 
-// var controller = require('./controllers/{file}.js');
-// app.use('/{url}', ontroller);
+var usersController = require('./controllers/users.js');
+app.use('/users', usersController);
 
 mongoose.connect(mongoDBURI);
 mongoose.connection.once('open', function() {
