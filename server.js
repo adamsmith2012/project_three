@@ -13,7 +13,7 @@ var mongoDBURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/got'
 
 /****** MIDDLEWARE ******/
 
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
 app.use(express.static('public'));
 app.use(session({
   secret: "kungfukenny",
@@ -26,8 +26,11 @@ app.use(session({
 var usersController = require('./controllers/users.js');
 app.use('/users', usersController);
 
-var charController = require('./controllers/chracters.js');
-app.use('/chracters', controller);
+var sessionController = require('./controllers/sessions.js');
+app.use('/sessions', sessionController);
+
+// var charController = require('./controllers/characters.js');
+// app.use('/characters', charController);
 
 mongoose.connect(mongoDBURI);
 mongoose.connection.once('open', function() {

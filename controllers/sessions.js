@@ -1,12 +1,16 @@
+//==============================
+// SESSION CONTROLLER
+//==============================
+
 var express = require('express');
 var router = express.Router();
 var User = require('../models/users.js');
 var bcrypt = require('bcrypt');
 
 // NEW
-router.get('/new', function(req, res) {
-  res.render('sessions/new.ejs');
-});
+// router.get('/new', function(req, res) {
+//   res.render('sessions/new.ejs');
+// });
 
 // CREATE
 router.post('/', function(req, res) {
@@ -14,12 +18,12 @@ router.post('/', function(req, res) {
     if (foundUser) {
       if (bcrypt.compareSync(req.body.password, foundUser.password)) {
         req.session.currentUser = foundUser;
-        res.redirect('/');
+        res.json(roundUser);
       } else {
-        res.redirect('/sessions/new');
+        res.json();
       }
     } else {
-      res.redirect('/sessions/new');
+      res.json();
     }
   });
 });
