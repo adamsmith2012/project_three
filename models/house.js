@@ -4,7 +4,7 @@
 var mongoose = require('mongoose'); // npm install mongoose --save
 
 var houseSchema = mongoose.Schema({
-  name: {String, required: true, unique: true}
+  name: {type: String, required: true, unique: true},
   img: String,
   region: String
 });

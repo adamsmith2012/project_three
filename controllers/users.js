@@ -7,6 +7,16 @@ var router = express.Router();
 var User = require('../models/users.js');
 var bcrypt = require('bcrypt');
 
+// GET
+/**
+ * Returns all users in database
+ */
+router.get('/', function(req, res) {
+  User.find({}, function(err, foundUsers) {
+    res.json(foundUsers);
+  });
+});
+
 // CREATE
 /**
  * Creates a new user and adds it to the database
@@ -36,6 +46,18 @@ router.put('/:id', function(req, res) {
     function(err, updatedUser) {
       res.json(updatedUser);
     });
+});
+
+// DELETE
+/**
+ * Deletes a user
+ * URL params: user model id
+ */
+router.delete('/:id', function(req, res) {
+  User.findByIdAndRemove(req.params.id, function(err, foundUser) {
+    // TODO: add response
+    res.json();
+  })
 });
 
 module.exports = router;
