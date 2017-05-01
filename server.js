@@ -26,6 +26,9 @@ app.use(session({
 var usersController = require('./controllers/users.js');
 app.use('/users', usersController);
 
+var charController = require('./controllers/chracters.js');
+app.use('/chracters', controller);
+
 mongoose.connect(mongoDBURI);
 mongoose.connection.once('open', function() {
   console.log("Connected to mongo");
