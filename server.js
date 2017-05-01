@@ -5,6 +5,8 @@ var bodyParser = require('body-parser');
 
 /****** MODELS ******/
 
+var House = require('./models/house.js');
+
 // Heroku / Localhost setup
 
 var port = process.env.PORT || 3000;
@@ -19,6 +21,8 @@ app.use(express.static('public'));
 
 // var controller = require('./controllers/{file}.js');
 // app.use('/{url}', ontroller);
+var houseController = require('./controllers/house.js');
+app.use('/houses', houseController);
 
 /****** LISTENERS ******/
 
