@@ -6,6 +6,8 @@ var session = require('express-session');
 
 /****** MODELS ******/
 
+var House = require('./models/house.js');
+
 // Heroku / Localhost setup
 
 var port = process.env.PORT || 3000;
@@ -29,8 +31,11 @@ app.use('/users', usersController);
 var sessionController = require('./controllers/sessions.js');
 app.use('/sessions', sessionController);
 
-// var charController = require('./controllers/characters.js');
-// app.use('/characters', charController);
+var charController = require('./controllers/characters.js');
+app.use('/characters', charController);
+
+var houseController = require('./controllers/house.js');
+app.use('/houses', houseController);
 
 mongoose.connect(mongoDBURI);
 mongoose.connection.once('open', function() {
