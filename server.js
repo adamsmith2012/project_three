@@ -19,18 +19,13 @@ app.use(express.static('public'));
 
 /****** CONTROLLERS ******/
 
+var charController = require('./controllers/chracters.js');
+app.use('/chracters', controller);
 // var controller = require('./controllers/{file}.js');
 // app.use('/{url}', ontroller);
 var houseController = require('./controllers/house.js');
 app.use('/houses', houseController);
 
-/****** LISTENERS ******/
-
-app.get('/', function(req, res) {
-  res.render('index.ejs', {
-    //currentUser: req.session.currentUser
-  });
-});
 
 mongoose.connect(mongoDBURI);
 mongoose.connection.once('open', function() {
