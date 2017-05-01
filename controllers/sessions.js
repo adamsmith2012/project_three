@@ -7,11 +7,6 @@ var router = express.Router();
 var User = require('../models/users.js');
 var bcrypt = require('bcrypt');
 
-// NEW
-// router.get('/new', function(req, res) {
-//   res.render('sessions/new.ejs');
-// });
-
 // CREATE
 router.post('/', function(req, res) {
   User.findOne({ username: req.body.username }, function(err, foundUser) {

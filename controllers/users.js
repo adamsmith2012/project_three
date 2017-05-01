@@ -7,11 +7,6 @@ var router = express.Router();
 var User = require('../models/users.js');
 var bcrypt = require('bcrypt');
 
-// NEW
-// router.get('/new', function(req, res) {
-//   res.render('users/new.ejs');
-// });
-
 // CREATE
 /**
  * Creates a new user and adds it to the database
