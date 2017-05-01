@@ -17,8 +17,10 @@ app.use(express.static('public'));
 
 /****** CONTROLLERS ******/
 
+var charController = require('./controllers/chracters.js');
+app.use('/chracters', controller);
 // var controller = require('./controllers/{file}.js');
-// app.use('/{url}', ontroller);
+// app.use('/{url}', controller);
 
 mongoose.connect(mongoDBURI);
 mongoose.connection.once('open', function() {
