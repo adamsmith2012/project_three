@@ -13,7 +13,7 @@ router.post('/', function(req, res) {
     if (foundUser) {
       if (bcrypt.compareSync(req.body.password, foundUser.password)) {
         req.session.currentUser = foundUser;
-        res.json(roundUser);
+        res.json(foundUser);
       } else {
         res.json();
       }
@@ -26,7 +26,7 @@ router.post('/', function(req, res) {
 // DELETE
 router.delete('/', function(req, res) {
   req.session.destroy(function() {
-    res.redirect('/');
+    res.json();
   });
 });
 
