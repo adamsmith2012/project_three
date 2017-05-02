@@ -2,8 +2,11 @@ var express = require('express');
 var app = express();
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 /****** MODELS ******/
+
+var House = require('./models/house.js');
 
 // Heroku / Localhost setup
 
@@ -12,15 +15,27 @@ var mongoDBURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/got'
 
 /****** MIDDLEWARE ******/
 
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
 app.use(express.static('public'));
+app.use(session({
+  secret: "kungfukenny",
+  resave: false,
+  saveUninitialized: false
+}));
 
 /****** CONTROLLERS ******/
 
-var charController = require('./controllers/chracters.js');
-app.use('/chracters', controller);
-// var controller = require('./controllers/{file}.js');
-// app.use('/{url}', controller);
+var usersController = require('./controllers/users.js');
+app.use('/users', usersController);
+
+var sessionController = require('./controllers/sessions.js');
+app.use('/sessions', sessionController);
+
+var charController = require('./controllers/characters.js');
+app.use('/characters', charController);
+
+var houseController = require('./controllers/house.js');
+app.use('/houses', houseController);
 
 mongoose.connect(mongoDBURI);
 mongoose.connection.once('open', function() {
