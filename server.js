@@ -19,10 +19,9 @@ app.use(express.static('public'));
 
 /****** CONTROLLERS ******/
 
-var charController = require('./controllers/chracters.js');
-app.use('/chracters', controller);
-// var controller = require('./controllers/{file}.js');
-// app.use('/{url}', ontroller);
+var charController = require('./controllers/characters.js');
+app.use('/characters', charController);
+
 var houseController = require('./controllers/house.js');
 app.use('/houses', houseController);
 
