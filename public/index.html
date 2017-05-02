@@ -1,57 +1,352 @@
-<!DOCTYPE html>
-<html ng-app="ThroneApp">
-  <head>
-    <meta charset="utf-8">
-    <title>Claim Your Throne</title>
-      <!--Let browser know website is optimized for mobile-->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <!--Import Google Icon Font-->
-        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <!-- Compiled and minified CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css" media="screen,projection">
-        <link rel="stylesheet" href="css/app.css">
-      <!-- Compiled and minified JavaScript -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js" charset="utf-8"></script>
-  </head>
-  <header>
-     <img class="hImg" src="css/headerImage.png" alt=""/>
-     <nav>
-        <a href="#">About</a> <span class="pipe"> | </span>
-        <a href="#">My Account</a> <span class="pipe"> | </span>
-        <a href="#">Home</a> <span class="pipe"> | </span>
-        <a href="#">Houses</a> <span class="pipe"> | </span>
-        <a href="#">Log In</a>
-     </nav>
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!--
+	BASED ON Fixduty template
+http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-web-template/
+-->
+<!DOCTYPE HTML>
+<html>
+   <head>
+      <title>Claim Your Throne</title>
+      <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+      <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+      <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+      <link rel="stylesheet" href="css/swipebox.css">
+      <script src="js/jquery-1.8.3.min.js"></script>
+      <!------ Light Box ------>
+      <script src="js/jquery.swipebox.min.js"></script>
+      <script type="text/javascript">
+   		jQuery(function($) {
+   			$(".swipebox").swipebox();
+   		});
+      </script>
+      <!------ Eng Light Box ------>
 
-  </header>
-  <body ng-controller="ThroneControler as throne">
-   <div class="card">
-      <div class="card-image waves-effect waves-block waves-light">
-         <img class="activator" src="http://www.hbo.com/assets/images/series/game-of-thrones/downloads/targaryen/wallpaper-targaryen-sigil-1600.jpg">
+      <!---- start-smoth-scrolling---->
+      <script type="text/javascript" src="js/move-top.js"></script>
+      <script type="text/javascript" src="js/easing.js"></script>
+      <script type="text/javascript">
+   		jQuery(document).ready(function($) {
+   			$(".scroll").click(function(event){
+   				event.preventDefault();
+   				$('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
+   			});
+   		});
+      </script>
+      <!---End-smoth-scrolling---->
+      <script src="js/responsiveslides.min.js"></script>
+      <script>
+          $(function () {
+            $("#slider").responsiveSlides({
+            	auto: true,
+            	nav: true,
+            	speed: 500,
+              namespace: "callbacks",
+              pager: true,
+            });
+          });
+      </script>
+      <!---Box Slider--->
+         <!-- jQuery library (served from Google) -->
+         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+         <!-- bxSlider Javascript file -->
+         <script src="/js/jquery.bxslider.min.js"></script>
+         <!-- bxSlider CSS file -->
+         <link href="/lib/jquery.bxslider.css" rel="stylesheet" />
+         <script type="text/javascript">
+            $(document).ready(function(){
+               $('.bxslider').bxSlider();
+            });
+         </script>
+   </head>
+   <body><!--Body start-->
+      <div class="header" id="head">
+   		<div class="header-top">
+   			<div class="container">
+   			   <div class="logo">
+      				<a href="index.html"><img class="hImg" src="images/headerImage.png"></a>
+   				</div>
+               <!--Menu-->
+   				<div class="top-menu">
+   					<span class="menu"> </span>
+
+      				<ul>
+      					<li><a href="#home" class="active" class="scroll">home</a></li>
+   						<li><a href="#aboutus" class="scroll">My House</a></li>
+   						<li><a href="#portfolio" class="scroll">Character List</a></li>
+   				 	 	<li><a href="#team" class="scroll">About Me</a></li>
+   				 		<li><a href="#family" class="scroll">GoT Family</a></li>
+   					   <li><a href="#login" class="scroll">Log In</a></li>
+   						</ul>
+
+   				</div>
+               <!--End Menu-->
+   				<!--script-nav-->
+         		<script>
+            		 $("span.menu").click(function(){
+               		 $(".top-menu ul").slideToggle("slow" , function(){
+               		 });
+            		 });
+         		</script>
+   				<div class="clearfix">
+               </div>
+   			</div>
+   		</div>
+         <div class="slider"> <!--Slider Section-->
+         	 <div class="container">
+         		   <div class="callbacks_container">
+         			  <ul class="rslides" id="slider">
+         				 <li>
+         					 <h3>“A mind needs books as a sword needs a whetstone, if it is to <span>keep its edge</span>.” </h3>
+         					<p>― George R.R. Martin, A Game of Thrones</p>
+         				 </li>
+         				 <li>
+         					<h3>“<span>Winter</span> is coming.”</h3>
+         					<p>― George R.R. Martin, A Game of Thrones</p>
+         				 </li>
+         				 <li>
+         					 <h3>“Some old wounds never truly heal, and bleed again at the <span>slightest word</span>. </h3>
+         					 <p>― George R.R. Martin, A Game of Thrones</p>
+         				 </li>
+         			  </ul>
+         		  </div>
+         	  </div>
+         </div>
       </div>
-      <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">House of Targaryen<i class="material-icons right">more_vert</i></span>
-      <p><a href="#">Add All Characters</a></p>
-       </div>
-       <div class="card-reveal">
-         <span class="card-title grey-text text-darken-4">House of Targaryen<i class="material-icons right">close</i></span>
-         <ul>
-            <h2>House of XYX</h2>
-            <li>Character 1</li>
-            <li>Character 2</li>
-            <li>Character 3</li>
-            <li>Character 4</li>
-            <li>Character 5</li>
-         </ul>
-       </div>
-   </div>
-   <div class="center">
+      <!--End Slider Section-->
+      <div class="content">
+      <!--Content Section-->
+         <div class="about-section" id="aboutus">
+            <!--My House Section-->
+            <div class="about-grids">
+               <div class="col-md-6 left-grid">
+                  <div class="right-grid1-icon">
+                     <img src="images/icon.png">
+                  </div>
+					   <img src="images/pic1.gif"/><!--Image from DB that has been entered by user HERE {{user.img}}-->
+					</div>
+					<div class="col-md-6 right-grid">
+						<div class="right-top">
+						<h3>My <span>Account</span></h3>
+						            <p>{{user.house}}</p>
+						</div>
+						</div>
+						<div class="clearfix"> </div>
+						</div>
+				</div>
+            <!--End My Account Section-->
+            <!--Portfolio Section-->
+            <div class="portfolio-section" id="portfolio">
+					<div class="continer">
+						<div class="portfolio-header">
+							<h3>
+                        <img src="images/img3.png"><span>Loyal</span> Subjects of {{throne.house}}</h3>
+								<p></p>
+						</div>
+                  <!-- character portfolio-section -->
+	               <div id="portfoliolist">
+      					<div class="portfolio card mix_all" data-cat="card" style="display: inline-block; opacity: 1;">
+      						<div class="portfolio-wrapper grid_box">
+      							<a href="images/1.jpg" class="swipebox"  title="Image Title">
+      								<img src="images/1.jpg" class="img-responsive" alt=""> <!-- Image from {{throne.characters}} -->
+      								<span class="zoom-icon"></span> </a></div>
+                     </div>
+      					<div class="portfolio app mix_all " data-cat="app" style="display: inline-block; opacity: 1; ">
+      						<div class="portfolio-wrapper grid_box">
+      							 <a href="images/2.jpg" class="swipebox"  title="Image Title"> <img src="images/2.jpg" class="img-responsive" alt=""><span class="zoom-icon"></span> </a><!-- Image from {{throne.characters}} -->
+      		                </div>
+      					</div>
+      					<div class="portfolio card mix_all" data-cat="card" style="display: inline-block; opacity: 1;">
+      						<div class="portfolio-wrapper grid_box">
+      							<a href="images/3.jpg" class="swipebox"  title="Image Title"> <img src="images/3.jpg" class="img-responsive" alt=""><span class="zoom-icon"></span> </a><!-- Image from {{throne.characters}} -->
+      		                </div>
+      					</div>
+      					<div class="portfolio app mix_all" data-cat="app" style="display: inline-block; opacity: 1;">
+      						<div class="portfolio-wrapper grid_box">
+      							<a href="images/4.jpg" class="swipebox"  title="Image Title"> <img src="images/4.jpg" class="img-responsive" alt=""><span class="zoom-icon"></span> </a><!-- Image from {{throne.characters}} -->
+      		                </div>
+      					</div>
+      					<div class="portfolio card mix_all" data-cat="card" style="display: inline-block; opacity: 1;">
+      						<div class="portfolio-wrapper grid_box">
+      							<a href="images/5.jpg" class="swipebox"  title="Image Title"> <img src="images/5.jpg" class="img-responsive" alt=""><span class="zoom-icon"></span> </a><!-- Image from {{throne.characters}} -->
+      		                </div>
+      					</div>
+      					<div class="portfolio icon mix_all" data-cat="icon" style="display: inline-block; opacity: 1;">
+      						<div class="portfolio-wrapper grid_box">
+      							<a href="images/6.jpg" class="swipebox"  title="Image Title"> <img src="images/6.jpg" class="img-responsive" alt=""><span class="zoom-icon"></span> </a><!-- Image from {{throne.characters}} -->
+      		                </div>
+      					</div>
+      					<div class="portfolio card mix_all" data-cat=" web" style="display: inline-block; opacity: 1;">
+      						<div class="portfolio-wrapper grid_box">
+      							<a href="images/7.jpg" class="swipebox"  title="Image Title"> <img src="images/7.jpg" class="img-responsive" alt=""><span class="zoom-icon"></span> </a><!-- Image from {{throne.characters}} -->
+      		                </div>
+      					</div>
+      					<div class="portfolio card mix_all" data-cat="icon" style="display: inline-block; opacity: 1;">
+      						<div class="portfolio-wrapper grid_box">
+      							<a href="images/8.jpg" class="swipebox"  title="Image Title"> <img src="images/8.jpg" class="img-responsive" alt=""><span class="zoom-icon"></span> </a><!-- Image from {{throne.characters}} -->
+      		                </div>
+      					</div>
+					      <div class="clearfix"> </div>
+	               </div>
+					   <div class="clearfix"> </div>
+               </div>
+               <!--End character portfolio section-->
+            </div>
+            <!-- End Portfolio Section  -->
+            <!-- About Me Section -->
+	         <div class="team-section" id="team">
+   				<div class="container">
+      				<div class="team-header">
+                     <!---{{user.img}}--->
+      					<h3><img src="images/icon1.png"> About <span>Me</span></h3>
 
-   </div>
-   <div class="rSide">
+      					<p>Hello, i'm {{user.name}} of {{user.house}}.</p>
+   					</div>
+   					<div class="team-grids">
+   						<div class="col-md-4 team-grid">
+   							<img src="images/t1.jpg"> <!---{{user.houseImg}}--->
+   						</div>
+   						<div class="team-grids">
+   							<div class="col-md-8 team-grid">
+   								<div class="team-content">
+   									<h4>{{user.name}}</h4><br><br><br><br>
+   									<h3>{{user.title}}</h3>
+                              <h2>{{user.email}}</h2>
+   									<br>
+   	                        <p></p>
+   								</div>
+   				         </div>
+   					  </div>
+   			        <div class="clearfix"> </div>
+   				   </div>
+   				</div>
+            </div><!-- End About Me Section -->
 
-   </div>
-  </body>
+
+
+						<div class="kill-now-section" id="family">
+						<div class="container">
+							<div class="kill-now-header">
+
+							<h3><img src="images/img3.png"> GoT <span>Family</span></h3>
+								<p>The big family in Game Of Thrones</p>
+								</div>
+								<div class="kill-now-grids"><!-- Columns 1 -->
+									<div class="col-md-4 pric-grid effect">
+										<div class="pric-top">
+											<span>1</span>
+											<h4>Stark</h4>
+										</div>
+										<div class="pric-list">
+											<ul>
+												<li>Edard Stark</li>
+												<li>Catelyn Stark</li>
+												<li>Robb Stark</li>
+												<li>Arya Stark</li>
+												<li>John Snow</li>
+										     </ul>
+										<p><a href="">Kill now</a></p>
+										</div>
+										</div>
+										<div class="col-md-4 pric-grid effect"><!-- Columns 2 -->
+										<div class="pric-top">
+											<span>2</span>
+											<h4>Lannister</h4>
+										</div>
+										<div class="pric-list">
+											<ul>
+											<li>Tywin Lannister</li>
+												<li>Jaime Lannister</li>
+												<li>Tyrion Lannister</li>
+												<li>Cersei Lannister</li>
+												<li>Joffrey Lannister</li>
+										    </ul>
+										<p><a href="">Kill now</a></p>
+										</div>
+										</div>
+										<div class="col-md-4 pric-grid effect"><!-- Columns 3 -->
+										<div class="pric-top">
+											<span>3</span>
+											<h4>Targaryen</h4>
+										</div>
+										<div class="pric-list">
+											<ul>
+												<li>Khaleesi</li>
+												<li>Jorah Mormont</li>
+												<li>Khal Drogo</li>
+												<li>Viserys Targaryen</li>
+												<li>Jorah Mormont</li>
+										</ul>
+										<p><a href="">Kill now</a></p>
+										</div>
+										</div>
+										<div class="clearfix"> </div>
+									</div>
+							</div>
+						</div>
+
+
+						<!--Contact Section-->
+					<div class="contact-section" id="login">
+						<div class="contact-grids">
+							<div class="col-md-6 contact-leftgrid">
+							<!--Title Contact Section-->
+								<h3><img src="images/icon7.png"> Send me a <span>Sword</span></h3>
+								<p>Kill me with a sword, please.</p>
+								<!--End Title Contact Section-->
+							<form>
+								<input type="text" class="text" value="Name " onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name ';}">
+								 <input type="text" class="text" value="Email " onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email ';}">
+									<textarea value="Message" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}">Message </textarea>
+					 					<input type="submit" value="SEND">
+								</form>
+							</div>
+							<!--Google Maps Section-->
+							<div class="col-md-6 contact-rightgrid">
+								<div class="google-map">
+									<img src="images/map.jpg"> </img>
+									</div>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+
+						</div>
+						</div>
+					</div> <!--End Contact Section-->
+
+			<div class="footer-section">
+								<div class="container">
+
+									<div class="footer-top">
+									<p> Designed by <a href="http://w3layouts.com" target="target_blank">Didier Laureaux</a></p>
+								</div>
+					<script type="text/javascript">
+						$(document).ready(function() {
+							/*
+							var defaults = {
+					  			containerID: 'toTop', // fading element id
+								containerHoverID: 'toTopHover', // fading element hover id
+								scrollSpeed: 1200,
+								easingType: 'linear'
+					 		};
+							*/
+
+							$().UItoTop({ easingType: 'easeOutQuart' });
+
+						});
+					</script>
+				<a class="scroll" href="#head" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+
+
+				</div>
+			</div>
+
+	</body>
 </html>
