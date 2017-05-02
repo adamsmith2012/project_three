@@ -38,14 +38,18 @@ router.post('/', function(req, res) {
  * Response: user model
  */
 router.put('/:id', function(req, res) {
-  var data = {
-    name: req.body.name,
-    image: req.body.image
+  if(req.session.currentUser && req.session.currentUser._id == req.params.id) {
+    var data = {
+      name: req.body.name,
+      image: req.body.image
+    }
+    User.findByIdAndUpdate(req.params.id, data, {new:true},
+      function(err, updatedUser) {
+        res.json(updatedUser);
+      });
+  } else {
+    res.json();
   }
-  User.findByIdAndUpdate(req.params.id, data, {new:true},
-    function(err, updatedUser) {
-      res.json(updatedUser);
-    });
 });
 
 // DELETE
@@ -54,10 +58,14 @@ router.put('/:id', function(req, res) {
  * URL params: user model id
  */
 router.delete('/:id', function(req, res) {
-  User.findByIdAndRemove(req.params.id, function(err, foundUser) {
-    // TODO: add response
+  if(req.session.currentUser && req.session.currentUser._id == req.params.id) {
+    User.findByIdAndRemove(req.params.id, function(err, foundUser) {
+      // TODO: add response
+      res.json(foundUser);
+    })
+  } else {
     res.json();
-  })
+  }
 });
 
 module.exports = router;
