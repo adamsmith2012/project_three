@@ -4,8 +4,9 @@
 
 var express = require('express');
 var router = express.Router();
-var User = require('../models/users.js');
 var bcrypt = require('bcrypt');
+var User = require('../models/users.js');
+var House = require('../models/house.js');
 
 // GET
 /**
@@ -54,15 +55,28 @@ router.put('/:id', function(req, res) {
 
 // DELETE
 /**
- * Deletes a user
+ * Deletes a user and associated houses
  * URL params: user model id
  */
 router.delete('/:id', function(req, res) {
   if(req.session.currentUser && req.session.currentUser._id == req.params.id) {
     User.findByIdAndRemove(req.params.id, function(err, foundUser) {
-      // TODO: add response
-      res.json(foundUser);
-    })
+      var houseIds = [];
+
+      for (var i=0; i < foundUser.houses.length; i++) {
+        houseIds.push(foundUser.houses[i]._id);
+      }
+
+      House.remove(
+        {
+          _id: {
+            $in: houseIds
+          }
+        }, function(err, data) {
+          res.json(foundUser);
+        }
+      )
+    });
   } else {
     res.json();
   }
