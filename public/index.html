@@ -14,6 +14,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js" charset="utf-8"></script>
+        <!-- Angular JS -->
+        <script src="/js/app.js" charset="utf-8"></script>
   </head>
   <header>
      <img class="hImg" src="css/headerImage.png" alt=""/>
@@ -27,6 +29,17 @@
 
   </header>
   <body ng-controller="ThroneControler as throne">
+                <!-- House Partial | Include -->
+    <section ng-include="'partials/house.html'"></section>
+    <div ng-controller="HouseController as main">
+      <ol>
+        <dl ng-repeat="house in main.houses">
+          <h3>{{house.name}}</h3>
+          <h1>hi</h1>
+          <!-- <dl><img src="{{house.imageLink}}"></dl> -->
+        </dl>
+      </ol>
+    </div>
    <div class="card">
       <div class="card-image waves-effect waves-block waves-light">
          <img class="activator" src="http://www.hbo.com/assets/images/series/game-of-thrones/downloads/targaryen/wallpaper-targaryen-sigil-1600.jpg">

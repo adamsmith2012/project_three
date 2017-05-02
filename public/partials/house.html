@@ -1,0 +1,8 @@
+<div ng-controller="HouseController as main">
+  <ol>
+    <dl ng-repeat="house in main.houses">
+      <h3>{{house.name}}</h3>
+      <dl><img src="{{house.imageLink}}"></dl>
+    </dl>
+  </ol>
+</div>
