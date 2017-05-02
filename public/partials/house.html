@@ -1,8 +1,22 @@
 <div ng-controller="HouseController as main">
-  <ol>
-    <dl ng-repeat="house in main.houses">
-      <h3>{{house.name}}</h3>
-      <dl><img src="{{house.imageLink}}"></dl>
-    </dl>
-  </ol>
+  <section>
+    <ol>
+      <!-- DISPLAY HOUSES -->
+      <dl ng-repeat="house in main.houses">
+        <h3>{{house.name}}</h3>
+        <dl><img src="{{house.img}}"></dl>
+        <dl>{{house.region}}</dl>
+      </dl>
+    </ol>
+  </section>
+  <section>
+    <h3>Create New House</h3>
+    <!-- CREATE NEW HOUSE -->
+    <form ng-submit="main.createHouses()">
+      <input type="text" ng-model="main.name" placeholder="Name"/><br>
+      <input type="text" ng-model="main.img" placeholder="Url"/><br>
+      <input type="text" ng-model="main.region" placeholder="Region"/><br>
+      <input type="submit" value="Create House">
+    </form>
+  </section>
 </div>

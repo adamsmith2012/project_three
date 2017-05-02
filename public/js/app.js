@@ -68,7 +68,7 @@ this.updateHouse = function(House) {
   this.getHouses = function() {
     $http({
       method:'GET',
-      url: 'https://api.got.show/api/houses/'
+      url: '/houses'
     }).then(function(response) {
       console.log(response);
       controller.houses = response.data
