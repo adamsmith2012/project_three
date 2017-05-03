@@ -1,5 +1,7 @@
+/****** ANGULAR MODULE DECLARATION ******/
 var app = angular.module('ThroneApp', []);
 
+/****** CONTROLLERS ******/
 app.controller('ThroneController', ['$http', function($http){
       var controller = this;
       $http({
@@ -12,9 +14,9 @@ app.controller('ThroneController', ['$http', function($http){
           title: this.title
         }
       })
-
    }]);
 
+/****** ROUTER ******/
 //Enabling one page routing for landing page-tentative
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
    $locationProvider.html5Mode({enabled:true});
