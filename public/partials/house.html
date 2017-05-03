@@ -1,11 +1,24 @@
+<!-- FOR TESTING PURPOSE -->
 <div ng-controller="HouseController as main">
   <section>
     <ol>
       <!-- DISPLAY HOUSES -->
-      <dl ng-repeat="house in main.houses">
-        <h3>{{house.name}}</h3>
-        <dl><img src="{{house.img}}"></dl>
-        <dl>{{house.region}}</dl>
+      <dl ng-repeat="house in main.houses" ng-click="main.showEditForm(house._id)">
+        <!-- Hides Data when clicked -->
+        <ol>
+          <h3>{{house.name}}</h3>
+          <dl><img src="{{house.img}}"></dl>
+          <dl>{{house.region}}</dl>
+        </ol>
+        <!-- UPDATE HOUSE -->
+        <form ng-submit="main.updateHouse(house)" ng-if="main.editableHousesId === house._id">
+          <input type="text" ng-model="house.name" placeholder="name"/><br>
+          <input type="text" ng-model="house.img" placeholder="url"/><br>
+          <input type="text" ng-model="house.region" placeholder="region"/><br>
+          <input type="submit" value="Update House"/>
+        </form>
+        <!-- DELETE BUTTON -->
+        <button ng-click="main.deleteHouse(house._id)">Delete</button>
       </dl>
     </ol>
   </section>
