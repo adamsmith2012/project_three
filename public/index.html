@@ -163,7 +163,7 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
 						  <ul>
                 <!-- DISPLAY HOUSES -->
                                                               <!-- SHOW FORM ON CLICK-->
-						    <li ng-repeat="house in throne.user.houses">
+						    <li ng-repeat="house in throne.user.houses" ng-click="throne.showEditForm(house._id)">
                   <ul>
                     <h3>
                     {{ house.name }}
@@ -173,7 +173,7 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
                   </ul>
                   <!-- UPDATE HOUSE FORM-->
                                                                <!-- BOOLEAN FOR SHOW FORM-->
-                  <form ng-submit="throne.updateHouse(house)">
+                  <form ng-submit="throne.updateHouse(house)" ng-if="throne.editableHousesId === house._id">
                     <input type="text" ng-model="house.name" placeholder="name"/><br>
                     <input type="text" ng-model="house.img" placeholder="url"/><br>
                     <input type="text" ng-model="house.region" placeholder="region"/><br>
