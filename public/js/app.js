@@ -36,6 +36,7 @@ app.controller('ThroneController', ['$http', function($http){
     }).then(function(response) {
       controller.logInUsername = controller.newUserUsername;
       controller.logInPassword = controller.newUserPassword;
+      controller.newUserName = controller.newUserUsername = controller.newUserPassword = "";
       controller.logIn();
       // controller.getHouses(); // 3) Updates page
     });
@@ -51,6 +52,7 @@ app.controller('ThroneController', ['$http', function($http){
       }
     }).then(function(response) {
       controller.user = response.data;
+      controller.logInUsername = controller.logInPassword = "";
       // controller.getHouses(); // 3) Updates page
     });
   }
