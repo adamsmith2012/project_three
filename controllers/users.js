@@ -4,8 +4,9 @@
 
 var express = require('express');
 var router = express.Router();
-var User = require('../models/users.js');
 var bcrypt = require('bcrypt');
+var User = require('../models/users.js');
+var House = require('../models/house.js');
 
 // GET
 /**
@@ -38,26 +39,47 @@ router.post('/', function(req, res) {
  * Response: user model
  */
 router.put('/:id', function(req, res) {
-  var data = {
-    name: req.body.name,
-    image: req.body.image
+  if(req.session.currentUser && req.session.currentUser._id == req.params.id) {
+    var data = {
+      name: req.body.name,
+      image: req.body.image
+    }
+    User.findByIdAndUpdate(req.params.id, data, {new:true},
+      function(err, updatedUser) {
+        res.json(updatedUser);
+      });
+  } else {
+    res.json();
   }
-  User.findByIdAndUpdate(req.params.id, data, {new:true},
-    function(err, updatedUser) {
-      res.json(updatedUser);
-    });
 });
 
 // DELETE
 /**
- * Deletes a user
+ * Deletes a user and associated houses
  * URL params: user model id
  */
 router.delete('/:id', function(req, res) {
-  User.findByIdAndRemove(req.params.id, function(err, foundUser) {
-    // TODO: add response
+  if(req.session.currentUser && req.session.currentUser._id == req.params.id) {
+    User.findByIdAndRemove(req.params.id, function(err, foundUser) {
+      var houseIds = [];
+
+      for (var i=0; i < foundUser.houses.length; i++) {
+        houseIds.push(foundUser.houses[i]._id);
+      }
+
+      House.remove(
+        {
+          _id: {
+            $in: houseIds
+          }
+        }, function(err, data) {
+          res.json(foundUser);
+        }
+      )
+    });
+  } else {
     res.json();
-  })
+  }
 });
 
 module.exports = router;

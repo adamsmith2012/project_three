@@ -5,9 +5,12 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+var House = require('./house.js');
+
 var userSchema = Schema({
   name: {type: String, required: true},
   image: String,
+  houses: [House.schema],
   username: {type: String, required: true},
   password: {type: String, required: true}
 });
