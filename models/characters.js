@@ -9,7 +9,10 @@ var mongoose = require('mongoose');
 var charSchema = mongoose.Schema({
   name: {type: String, required: true, unique: true},
   img: String,
-  region: String
+  title: String,
+  house: String,
+  books: String,
+  stat: Number
 });
 
 /****** DB COLLECTION CREATION ******/
