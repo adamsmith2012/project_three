@@ -1,0 +1,39 @@
+body{
+   font-family: 'Montserrat', sans-serif;
+   color: #E5CFCF;
+   background-color: black;
+}
+.video {
+  position: fixed;
+  top: 50%; left: 50%;
+  z-index: 1;
+  min-width: 100%;
+  min-height: 100%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  opacity: 0.8;
+}
+
+.landing_content{
+   position: relative;
+   z-index: 2;
+   margin: 0 auto;
+   max-width: 720px;
+   text-align: center;
+   font-weight: bold;
+   border-radius: 10px;
+   background-image: url('/images/winter got.jpg');
+   /*background-color: #5A2929;*/
+   opacity: 0.5;
+   padding: 40px;
+
+}
+
+.enter{
+   border: 3px solid #C10505;
+   color: #C10505;
+   padding: 20px;
+   font-size: 25px;
+   margin-top: 10px;
+}
