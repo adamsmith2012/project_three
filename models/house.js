@@ -6,7 +6,7 @@ var mongoose = require('mongoose'); // npm install mongoose --save
 var Character = require('./characters.js');
 
 var houseSchema = mongoose.Schema({
-  name: {type: String, required: true, unique: true},
+  name: {type: String, required: true},
   img: String,
   region: String,
   characters: [Character.schema]
