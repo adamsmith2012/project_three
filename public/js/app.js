@@ -55,16 +55,10 @@ app.controller('ThroneController', ['$http', function($http){
     });
   }
 
-}]);
+//=================================
+// HOUSE SECTION
+//=================================
 
-//========================
-// HOUSE CONTROLLER
-//========================
-app.controller('HouseController', ['$http', function($http) {
-  var controller = this;
-  //======================================
-  // 1) Create House Data
-  //======================================
   this.createHouses = function() {
     $http({ // Makes HTTP request to server
       method: 'POST',
@@ -75,7 +69,8 @@ app.controller('HouseController', ['$http', function($http) {
         region: this.region
       }
     }).then(function(response) {
-      controller.getHouses(); // 3) Updates page on Houses creation
+      controller.user.houses.push(response.data);
+      // controller.getHouses(); // 3) Updates page on Houses creation
     });
   };
   //======================================
@@ -127,7 +122,9 @@ app.controller('HouseController', ['$http', function($http) {
     });
   };
   this.getHouses();
+
 }]);
+
 
 /****** ROUTER ******/
 //Enabling one page routing for landing page-tentative

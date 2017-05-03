@@ -161,10 +161,40 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
 						<div class="right-top">
 					  <h3>My <span>Houses</span></h3>
 						  <ul>
-						    <li ng-repeat="house in throne.user.houses"><h3>{{ house.name }}</h3></li>
+                <!-- DISPLAY HOUSES -->
+                                                              <!-- SHOW FORM ON CLICK-->
+						    <li ng-repeat="house in throne.user.houses">
+                  <ul>
+                    <h3>
+                    {{ house.name }}
+                    <img src="{{ house.img }}" alt="">
+                    {{ house.region }}
+                    </h3>
+                  </ul>
+                  <!-- UPDATE HOUSE FORM-->
+                                                               <!-- BOOLEAN FOR SHOW FORM-->
+                  <form ng-submit="throne.updateHouse(house)">
+                    <input type="text" ng-model="house.name" placeholder="name"/><br>
+                    <input type="text" ng-model="house.img" placeholder="url"/><br>
+                    <input type="text" ng-model="house.region" placeholder="region"/><br>
+                    <input type="submit" value="Update House"/>
+                  </form>
+                  <!-- DELETE BUTTON -->
+                  <button ng-click="throne.deleteHouse(house._id)">Delete</button>
+                </li>
 						  </ul>
+              <section>
+                <h3>Create House</h3>
+                <!-- CREATE NEW HOUSE -->
+                <form ng-submit="throne.createHouses()">
+                  <input type="text" ng-model="throne.name" placeholder="Name"/><br>
+                  <input type="text" ng-model="throne.img" placeholder="Url"/><br>
+                  <input type="text" ng-model="throne.region" placeholder="Region"/><br>
+                  <input type="submit" value="Create House">
+                </form>
+              </section>
               <!-- House Partial | Include -->
-             <section ng-include="'partials/house.html'"></section>
+             <!-- <section ng-include="'partials/house.html'"></section> -->
 						</div>
 						</div>
 						<div class="clearfix"> </div>
