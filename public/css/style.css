@@ -24,6 +24,9 @@ h1,h2,h3,h4,h5,h6{
 	padding:0 0;
 	margin:0 0;
 }
+h7{
+   color: #675151;
+}
 p{
 	padding:0 0;
 	margin:0 0;
@@ -33,7 +36,8 @@ ul{
 	margin:0 0;
 }
 body{
-  background-color: #1a1a1a;
+
+   background-color: #1a1a1a;
 	padding:0 0;
 	margin:0 0;
 	font-family: 'Montserrat', sans-serif;
@@ -586,17 +590,17 @@ div#portfoliolist {
   float: left;
   color: white;
  }
-  .team-content h3{
+.team-content h3{
   font-size: 2.5em;
   text-align: left;
   color: #C10505;
  }
-  .team-content h2{
+.team-content h2{
   font-size: 1.3em;
   text-align: left;
   color: white;
  }
- .team-grid img {
+.team-grid img {
 
   border: 5px solid #C10505;
 }
@@ -611,7 +615,6 @@ div#portfoliolist {
 	text-transform: uppercase;
 	font-weight: 700;
 }
-
 .team-info h4 {
   font-size: 2.5em;
   color: #fff;
@@ -628,30 +631,30 @@ div#portfoliolist {
   border: none;
   margin-top:0.2em;
 }
-.kill-now-section {
+.house-cards-section {
   padding: 6em 0 0;
-  background: url("../images/banner3.jpg") no-repeat;
+  background: url("../images/winter got.jpg") no-repeat;
   background-size: cover;
     min-height: 1055px;
 }
-.kill-now-header {
+.house-cards-header {
     width: 37%;
   margin: 0 auto 2em;
 
 }
-.kill-now-header h3 {
+.house-cards-header h3 {
   font-size: 2.5em;
   color: #fff;
   margin-bottom: 0.1em;
   text-transform: capitalize;
     font-weight: 600;
 }
-.kill-now-header span {
-  color: #675151;
+.house-cards-header span {
+  color: #360000;
   font-size: 1.3em;
   font-weight: 600;
 }
-.kill-now-header p{
+.house-cards-header p{
   font-size: 1.3em;
   color: #fff;
  }
@@ -666,9 +669,7 @@ div#portfoliolist {
     border: 1px solid #C10505;
     margin: 2% 5% 0 0;
   width: 27.3%;
-
 }
-
 .pric-list {
   padding: 25px 0;
 }
@@ -701,7 +702,6 @@ div#portfoliolist {
   border-bottom: 1px solid #C10505;
   margin: 0 40px;
   font-weight: 400;
-
 }
 .pric-list p {
   color: #000;
@@ -724,7 +724,6 @@ div#portfoliolist {
   -moz-transition: .5s all;
   -o-transition: .5s all;
   -ms-transition: .5s all;
-
   border-radius: 6px;
 }
 .pric-list p:hover{
@@ -734,7 +733,6 @@ div#portfoliolist {
   -moz-transition: .5s all;
   -o-transition: .5s all;
   -ms-transition: .5s all;
-
   color:#C10505;
   border-radius: 6px;
 }
@@ -744,13 +742,12 @@ div#portfoliolist {
 .blog-header {
     width: 37%;
   margin: 0 auto 3.5em;
-
 }
 .blog-header h3 {
   font-size: 2.5em;
   color: #000000;
   margin-bottom: 0.1em;
-    text-transform: capitalize;
+  text-transform: capitalize;
 }
 .blog-header span {
   color: #C10505;
@@ -775,7 +772,7 @@ div#portfoliolist {
   margin: 0.5em 0;
   font-family: 'Exo', sans-serif;
   text-decoration: none;
-    display: block;
+  display: block;
 }
 .blog-grid p {
   font-size: 1.2em;
@@ -888,13 +885,14 @@ div#portfoliolist {
 }
 .contact-rightgrid {
   padding: 0;
+  margin: 0;
 }
-.google-map {
+.register {
   border-top: 14px solid #C10505;
   border-left: 14px solid #C10505;
   border-bottom: 14px solid#C10505;
 }
-.google-map iframe {
+.register iframe {
   width: 100%;
   min-height: 555px;
 }
@@ -910,7 +908,7 @@ div#portfoliolist {
 }
 .footer-top a {
 	font-size: 19px;
-	color: #f0c514;
+	color: #C10505;
 	font-weight: 400;
 	text-transform: capitalize;
 }
@@ -998,7 +996,7 @@ div#portfoliolist {
 	resize:none;
 }
 .content-form form input[type="submit"] {
-	background: #675151;
+	background: #E5CFCF;
 	padding: 9px 1.3em;
 	border: none;
 	font-size: 1em;
@@ -1060,8 +1058,8 @@ div#portfoliolist {
 	margin-bottom:2.5em;
 }
 .hImg{
-   height: 25px;
-   width: 250px;
+   height: 40px;
+   width: 550px;
 }
 #toTop {
 	display: none;
@@ -1077,7 +1075,7 @@ div#portfoliolist {
 	background: url("../images/to-top2.png") no-repeat 0px 0px;
 }
 
-				/*-- responsive-mediaquries --*/
+/*-- responsive-mediaquries --*/
 
 @media(max-width:1440px){
 	.header {
@@ -1273,17 +1271,17 @@ div#portfoliolist {
 	 	  left: 31px;
 	 	  top: 15.5px;
  	 }
- 	.kill-now-section {
+ 	.house-cards-section {
   		padding: 5em 0 0;
   		min-height: 920px;
   	}
-  	.kill-now-header h3 {
+  	.house-cards-header h3 {
   		font-size: 2em;
   	}
-  	.kill-now-header span {
+  	.house-cards-header span {
   		font-size: 1.2em;
   	}
-  	.kill-now-header p {
+  	.house-cards-header p {
   		font-size: 1.1em;
   	}
   	.pric-top span {
@@ -1350,7 +1348,7 @@ div#portfoliolist {
  	.contact-leftgrid p {
   		font-size: 1.1em;
   	}
-  	.google-map iframe {
+  	.register iframe {
   		min-height: 530px;
 	}
 	.contact-leftgrid input[type="submit"] {
@@ -1573,17 +1571,17 @@ div#portfoliolist {
 		div#portfoliolist {
  			margin: 2em 0em;
 		}
-		.kill-now-section {
+		.house-cards-section {
 			  padding: 3em 0 0;
 			  min-height: 920px;
 		}
-		.kill-now-header {
+		.house-cards-header {
   			width: 50%;
 		}
-		.kill-now-header h3 {
+		.house-cards-header h3 {
  			 font-size: 1.6em;
 		}
-		.kill-now-header p {
+		.house-cards-header p {
 			  font-size: 1.05em;
 		}
 		.pric-top span {
@@ -1595,7 +1593,7 @@ div#portfoliolist {
   		.pric-list ul li {
 			  font-size: 1.2em;
 		}
-		.kill-now-section {
+		.house-cards-section {
 			 min-height: 800px;
 		}
 		.pric-grid {
@@ -1679,7 +1677,7 @@ div#portfoliolist {
 		.contact-leftgrid {
   			padding: 0 2em 0 1em;
 		}
-		.google-map iframe {
+		.register iframe {
 			min-height: 516px;
 		}
 		.contact-leftgrid input[type="submit"] {
@@ -1836,13 +1834,13 @@ div#portfoliolist {
 		     left: 24px;
 			 top: 10px;
 		}
-		.kill-now-header {
+		.house-cards-header {
   			width: 57%;
 		}
-		.kill-now-header h3 {
+		.house-cards-header h3 {
   			font-size: 1.3em;
 		}
-		.kill-now-header p {
+		.house-cards-header p {
 			font-size: 1em;
 		}
 		.pric-top span {
@@ -1860,7 +1858,7 @@ div#portfoliolist {
 			padding: 1em 0;
 			width: 45%;
 		}
-		.kill-now-section {
+		.house-cards-section {
   			min-height: 740px;
 		}
 		.blog-header {
@@ -1937,7 +1935,7 @@ div#portfoliolist {
 	.contact-leftgrid input[type="submit"] {
   		font-size: 1.1em;
 	}
-	.google-map iframe {
+	.register iframe {
   		min-height: 400px;
 	}
 	.footer-top p {
@@ -2145,17 +2143,17 @@ width:0%;
 	.team-grid:hover div.team-info {
   		padding: 4.3em 0em;
 	}
-	.kill-now-header {
+	.house-cards-header {
  		 width: 77%;
  		   margin: 0 auto 0em;
 	}
-	.kill-now-header img {
+	.house-cards-header img {
   		width: 20%;
 	}
-	.kill-now-header h3 {
+	.house-cards-header h3 {
   		font-size: 1.2em;
 	}
-	.kill-now-header span {
+	.house-cards-header span {
 	  font-size: 1.18em;
 	}
 	.pric-grid {
@@ -2252,7 +2250,7 @@ width:0%;
 		  margin: 0em 0 0 0;
 		  padding: 11px 1.3em
 	}
-	.google-map iframe {
+	.register iframe {
  		 min-height: 350px;
 	}
 }
@@ -2386,10 +2384,10 @@ width:0%;
 		  left: 66px;
 		  top: 9px;
 	}
-	.kill-now-header h3 {
+	.house-cards-header h3 {
 	  	font-size: 1.18em;
 	}
-	.kill-now-header p {
+	.house-cards-header p {
 	 	 font-size: 0.99em;
 		  overflow: hidden;
 		  height: 20px;
@@ -2462,6 +2460,10 @@ width:0%;
 	  .contact-leftgrid textarea {
 		  height: 120px;
 	}
-	.google-map iframe {
+	.register iframe {
  		 min-height: 235px;
 	}
+
+.image{
+   float:left;
+}
