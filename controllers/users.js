@@ -18,6 +18,15 @@ router.get('/', function(req, res) {
   });
 });
 
+/**
+ * Returns specific user
+ */
+ router.get('/:id', function(req, res) {
+   User.findById(req.params.id, function(err, foundUser) {
+     res.json(foundUser);
+   });
+ });
+
 // CREATE
 /**
  * Creates a new user and adds it to the database

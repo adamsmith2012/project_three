@@ -24,6 +24,15 @@ app.controller('ThroneController', ['$http', function($http){
     username: ""
   }
 
+  this.getCurrentUser = function() {
+    $http({ // Makes HTTP request to server
+      method: 'GET',
+      url: '/users/' + controller.user._id,
+    }).then(function(response) {
+      controller.user = response.data;
+    });
+  }
+
   this.createUser = function() {
     $http({ // Makes HTTP request to server
       method: 'POST',
@@ -38,7 +47,6 @@ app.controller('ThroneController', ['$http', function($http){
       controller.logInPassword = controller.newUserPassword;
       controller.newUserName = controller.newUserUsername = controller.newUserPassword = "";
       controller.logIn();
-      // controller.getHouses(); // 3) Updates page
     });
   }
 
@@ -53,7 +61,6 @@ app.controller('ThroneController', ['$http', function($http){
     }).then(function(response) {
       controller.user = response.data;
       controller.logInUsername = controller.logInPassword = "";
-      // controller.getHouses(); // 3) Updates page
     });
   }
 
@@ -71,7 +78,7 @@ app.controller('ThroneController', ['$http', function($http){
         region: this.region
       }
     }).then(function(response) {
-      controller.user.houses.push(response.data);
+      controller.getCurrentUser();
       // controller.getHouses(); // 3) Updates page on Houses creation
     });
   };
@@ -83,7 +90,7 @@ app.controller('ThroneController', ['$http', function($http){
       method:'DELETE',
       url:'/houses/' + id
     }).then(function(response) {
-      controller.getHouses(); // 5) Updates page on Houses deletion
+      controller.getCurrentUser(); // 5) Updates page on Houses deletion
     });
   };
   //======================================
@@ -108,7 +115,7 @@ app.controller('ThroneController', ['$http', function($http){
       data: house
     }).then(function(response) {
       controller.editableHousesId = null;
-      controller.getHouses(); // 7) Updates page on House update
+      controller.getCurrentUser(); // 7) Updates page on House update
     });
   };
   //======================================
