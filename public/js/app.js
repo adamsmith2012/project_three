@@ -1,19 +1,61 @@
-var app = angular.module('ThroneApp', []);
+var app = angular.module('ThroneApp', ['ngRoute']);
 
 app.controller('ThroneController', ['$http', function($http){
-      var controller = this;
-      $http({
-        method:'GET',
-        url:'https://api.got.show/api/characters/',
-        data : {
-          house : this.house,
-          name: this.name,
-          books: this.books,
-          title: this.title
-        }
-      })
+  var controller = this;
+  $http({
+    method:'GET',
+    url:'https://api.got.show/api/characters/',
+    data : {
+      house : this.house,
+      name: this.name,
+      books: this.books,
+      title: this.title
+    }
+  })
 
-   }]);
+  /**** USER ****/
+
+  // What user will look like after successful log in
+  this.user = {
+    _id: "",
+    name: "",
+    image: "",
+    houses: [],
+    username: ""
+  }
+
+  this.createUser = function() {
+    $http({ // Makes HTTP request to server
+      method: 'POST',
+      url: '/users',
+      data: { // Gets turned into req.body
+        name: controller.newUserName,
+        username: controller.newUserUsername,
+        password: controller.newUserPassword
+      }
+    }).then(function(response) {
+      controller.logInUsername = controller.newUserUsername;
+      controller.logInPassword = controller.newUserPassword;
+      controller.logIn();
+      // controller.getHouses(); // 3) Updates page
+    });
+  }
+
+  this.logIn = function() {
+    $http({ // Makes HTTP request to server
+      method: 'POST',
+      url: '/sessions',
+      data: { // Gets turned into req.body
+        username: controller.logInUsername,
+        password: controller.logInPassword
+      }
+    }).then(function(response) {
+      controller.user = response.data;
+      // controller.getHouses(); // 3) Updates page
+    });
+  }
+
+}]);
 
 //========================
 // HOUSE CONTROLLER
