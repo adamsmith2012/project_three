@@ -51,8 +51,6 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
    </head>
    <!--Body start-->
    <body ng-controller="ThroneController as throne">
-     <!-- House Partial | Include -->
-    <section ng-include="'partials/house.html'"></section>
       <div class="header" id="head">
    		<div class="header-top">
    			<div class="container">
@@ -165,6 +163,8 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
 						  <ul>
 						    <li ng-repeat="house in throne.user.houses"><h3>{{ house.name }}</h3></li>
 						  </ul>
+              <!-- House Partial | Include -->
+             <section ng-include="'partials/house.html'"></section>
 						</div>
 						</div>
 						<div class="clearfix"> </div>
