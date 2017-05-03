@@ -1,6 +1,4 @@
 <!--
-=======
-<!--
 Author: W3layouts
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
@@ -11,10 +9,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-web-template/
 -->
 <!DOCTYPE HTML>
-<html>
+<html ng-app="ThroneApp">
    <head>
       <title>Claim Your Throne</title>
+      <!-- AngularJS -->
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js" charset="utf-8"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.min.js" charset="utf-8"></script>
+      <base href="/">
+      <!-- app.js -->
+      <script src="js/app.js" charset="utf-8"></script>
+      <!-- Bootstrap -->
       <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+      <!-- User Style -->
       <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -23,12 +29,12 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
       <link rel="stylesheet" href="css/swipebox.css">
       <script src="js/jquery-1.8.3.min.js"></script>
       <!------ Light Box ------>
-      <script src="js/jquery.swipebox.min.js"></script>
+      <!-- <script src="js/jquery.swipebox.min.js"></script>
       <script type="text/javascript">
    		jQuery(function($) {
    			$(".swipebox").swipebox();
    		});
-      </script>
+      </script> -->
       <!------ Eng Light Box ------>
       <script src="js/responsiveslides.min.js"></script>
       <script>
@@ -44,9 +50,7 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
       </script>
    </head>
    <!--Body start-->
-   <body>
-       <!-- House Partial | Include -->
-      <section ng-include="'partials/house.html'"></section>
+   <body ng-controller="ThroneController as throne">
       <div class="header" id="head">
    		<div class="header-top">
    			<div class="container">
@@ -112,22 +116,22 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
                <!--End Title Contact Section-->
                <!--Register Section (Hide when user hit Log In)-->
                <div>
-                  <form>
-                     <input type="text" class="text" value="" placeholder="NAME"/>
-                     <input type="text" class="text" value="" placeholder="EMAIL"/>
-                     <input type="text" class="text" value="" placeholder="NAME OF HOUSE"/>
-                     <input type="text" class="text" value="" placeholder="USER NAME"/>
-                     <input type="text" class="text" value="" placeholder="PASSWORD"/>
-                     <textarea value="" placeholder="DESCRIPTION OF HOUSE"></textarea>
+                  <form ng-submit="throne.createUser()">
+                     <input ng-model="throne.newUserName" type="text" class="text" value="" placeholder="NAME"/>
+                     <!-- <input ng-model="newUserName" type="text" class="text" value="" placeholder="EMAIL"/> -->
+                     <!-- <input ng-model="newUserName" type="text" class="text" value="" placeholder="NAME OF HOUSE"/> -->
+                     <input ng-model="throne.newUserUsername" type="text" class="text" value="" placeholder="USER NAME"/>
+                     <input ng-model="throne.newUserPassword" type="text" class="text" value="" placeholder="PASSWORD"/>
+                     <!-- <textarea value="" placeholder="DESCRIPTION OF HOUSE"></textarea> -->
                      <input type="submit" value="REGISTER">
                   </form> <br><br>
                </div>
                <!--End Register Section-->
                <!--Log In Section--->
                <div>
-                  <form>
-                     <input type="text" class="text" value="" placeholder="USER NAME"/>
-                     <input type="text" class="text" value="" placeholder="PASSWORD"/>
+                  <form ng-submit="throne.logIn()">
+                     <input ng-model="throne.logInUsername" type="text" class="text" value="" placeholder="USER NAME"/>
+                     <input ng-model="throne.logInPassword" type="text" class="text" value="" placeholder="PASSWORD"/>
                      <input type="submit" value="LOG IN">
                   </form>
                </div>
@@ -155,8 +159,10 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
 					</div>
 					<div class="col-md-6 right-grid">
 						<div class="right-top">
-						<h3>My <span>House</span></h3>
-						            <p>{{user.house}}</p>
+					  <h3>My <span>Houses</span></h3>
+						  <ul>
+						    <li ng-repeat="house in throne.user.houses"><h3>{{ house.name }}</h3></li>
+						  </ul>
 						</div>
 						</div>
 						<div class="clearfix"> </div>
@@ -170,7 +176,7 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
                      <!---{{user.img}}--->
       					<h3><img src="images/icon1.png"> About <span>Me</span></h3>
 
-      					<p>Hello, {{user.name}} of {{user.house}}.</p>
+      					<p>Hello, {{throne.user.name}}!</p>
    					</div>
    					<div class="team-grids">
    						<div class="col-md-4 team-grid">
@@ -179,9 +185,9 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
    						<div class="team-grids">
    							<div class="col-md-8 team-grid">
    								<div class="team-content">
-   									<h4>{{user.name}}</h4><br><br><br><br>
-   									<h3>{{user.title}}</h3>
-                              <h2>{{user.email}}</h2>
+   									<h4>{{throne.user.name}}</h4><br><br><br><br>
+   									<h3>{{throne.user.title}}</h3>
+                              <h2>{{throne.user.email}}</h2>
    									<br>
    	                        <p></p>
    								</div>
@@ -224,7 +230,7 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
 								</div>
 								<div class="pric-list">
 									<ul>
-                              <li>{{house.character1}}</li>
+                    <li>{{house.character1}}</li>
    									<li>{{house.character2}}</li>
    									<li>{{house.character3}}</li>
    									<li>{{house.character4}}</li>
@@ -317,11 +323,11 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
 									<div class="footer-top">
 									<h7>Integrated Design of Didier Laureaux and GA Hopper Cohort Team: Soniya Jassal, Adam Smith, and Lenin Yang Copyright @ 2017</h7>
 								</div>
-					<script type="text/javascript">
+					<!-- <script type="text/javascript">
 						$(document).ready(function() {
 							$().UItoTop({ easingType: 'easeOutQuart' });
 						});
-					</script>
+					</script> -->
 				<a class="scroll" href="#head" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 
 
