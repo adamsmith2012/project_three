@@ -57,16 +57,10 @@ app.controller('ThroneController', ['$http', function($http){
     });
   }
 
-}]);
+//=================================
+// HOUSE SECTION
+//=================================
 
-//========================
-// HOUSE CONTROLLER
-//========================
-app.controller('HouseController', ['$http', function($http) {
-  var controller = this;
-  //======================================
-  // 1) Create House Data
-//======================================
   this.createHouses = function() {
     $http({ // Makes HTTP request to server
       method: 'POST',
@@ -77,12 +71,13 @@ app.controller('HouseController', ['$http', function($http) {
         region: this.region
       }
     }).then(function(response) {
-      controller.getHouses(); // 3) Updates page on Houses creation
+      controller.user.houses.push(response.data);
+      // controller.getHouses(); // 3) Updates page on Houses creation
     });
   };
-//======================================
+  //======================================
   // 4) Deletes House Data
-//======================================
+  //======================================
   this.deleteHouse = function(id) {
     $http({
       method:'DELETE',
@@ -91,27 +86,34 @@ app.controller('HouseController', ['$http', function($http) {
       controller.getHouses(); // 5) Updates page on Houses deletion
     });
   };
-//======================================
+  //======================================
+  // 7) SHOWS EDIT FORM
+  //======================================
+  this.showEditForm = function(id) { // SHOW FUNCTION to update house on click
+    console.log(id);
+    this.editableHousesId = id // Whatever is being clicked
+  };
+  //======================================
   // 6) Updates House Data
-//======================================
-this.updateHouse = function(House) {
-  console.log(House);
-  // var newHouse = {
-  //   name: this.newName,
-  //   img: this.newImg,
-  // }
-  $http({
-    method:'PUT',
-    url:'/houses/' + House._id,
-    data: House
-  }).then(function(response) {
-    controller.editableHousesId = null;
-    controller.getHouses(); // 7) Updates page on House update
-  });
-};
-//======================================
+  //======================================
+  this.updateHouse = function(house) {
+    console.log(house);
+    // var newHouse = {
+    //   name: this.newName,
+    //   img: this.newImg,
+    // }
+    $http({
+      method:'PUT',
+      url:'/houses/' + house._id,
+      data: house
+    }).then(function(response) {
+      controller.editableHousesId = null;
+      controller.getHouses(); // 7) Updates page on House update
+    });
+  };
+  //======================================
   // 2) Get Houses Data
-//======================================
+  //======================================
   this.getHouses = function() {
     $http({
       method:'GET',
@@ -122,17 +124,19 @@ this.updateHouse = function(House) {
     });
   };
   this.getHouses();
+
 }]);
+
 
 /****** ROUTER ******/
 //Enabling one page routing for landing page-tentative
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
-   $locationProvider.html5Mode({enabled:true});
-   $routeProvider.when('/url1', { //route would come from controller file with routes
-      template: '<h2>This is the the URL1 Section</h2>',
-      controller: function(){
-         this.foo = 'bar';
-      },
-      controllerAs: 'main'
-   });
+  $locationProvider.html5Mode({enabled:true});
+  $routeProvider.when('/url1', { //route would come from controller file with routes
+    template: '<h2>This is the the URL1 Section</h2>',
+    controller: function(){
+      this.foo = 'bar';
+    },
+    controllerAs: 'main'
+  });
 }]);
