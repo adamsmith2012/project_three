@@ -4,9 +4,12 @@ app.controller('ThroneController', ['$http', function($http){
       var controller = this;
       $http({
         method:'GET',
-        url:'https://api.got.show/api/characters/find',
+        url:'https://api.got.show/api/characters/',
         data : {
-          count : this
+          house : this.house,
+          name: this.name,
+          books: this.books,
+          title: this.title
         }
       })
 
