@@ -856,7 +856,7 @@ div#portfoliolist {
     margin-bottom: 2.2em;
 }
 
-.contact-leftgrid  input[type="text"]{
+.contact-leftgrid  input[type="text"],input[type="password"]{
 	  width: 100%;
   padding: 15px 24px;
   border: 1px solid #969696;
