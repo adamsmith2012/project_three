@@ -311,7 +311,7 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
                 <br>
                 <h4>Add to:</h4>
                 <ul class="list-unstyled">
-                  <li ng-click="throne.addCharacter(throne.selectedChar, house._id)" class="char" ng-repeat="house in throne.user.houses"><h5>{{house.name}}</h5></li>
+                  <li ng-click="throne.addCharacter(throne.selectedChar, house._id)" class="char" ng-repeat="house in throne.user.houses | orderBy: 'name'"><h5>{{house.name}}</h5></li>
                 </ul>
               </div>
               <div class="clearfix"> </div>
