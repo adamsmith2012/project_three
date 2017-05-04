@@ -54,7 +54,7 @@ app.controller('ThroneController', ['$http', function($http){
     }).then(function(response) {
       controller.logInUsername = controller.newUserUsername;
       controller.logInPassword = controller.newUserPassword;
-      controller.newUserName = controller.newUserUsername = controller.newUserPassword = "";
+      controller.newUserName = controller.newUserUsername = controller.newUserPassword = controller.newUserImage = "";
       controller.logIn();
     });
   }
