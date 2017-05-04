@@ -97,14 +97,14 @@ app.controller('ThroneController', ['$http', function($http){
   // 7) SHOWS EDIT FORM
   //======================================
   this.showEditForm = function(id) { // SHOW FUNCTION to update house on click
-    console.log(id);
+    // console.log(id);
     this.editableHousesId = id // Whatever is being clicked
   };
   //======================================
   // 6) Updates House Data
   //======================================
   this.updateHouse = function(house) {
-    console.log(house);
+    // console.log(house);
     // var newHouse = {
     //   name: this.newName,
     //   img: this.newImg,

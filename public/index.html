@@ -239,12 +239,13 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
 							<p></p>
 						</div>
 						<div class="house-cards-grids"><!-- Columns 1 -->
-							<div class="col-md-4 pric-grid effect">
+							<div class="col-md-4 pric-grid effect" ng-repeat="house in throne.user.houses">
 								<div class="pric-top">
-									<span>1</span>
-										<h4>{{house.name}}</h4>
+
+                  <span><img class="house-image" src="{{ house.img }}" alt=""></span>
+										<h4> {{ house.name}} </h4>
 								</div>
-								<div class="pric-list">
+								<div class="pric-list" >
    								<ul>
    									<li>{{house.character1}}</li>
    									<li>{{house.character2}}</li>
