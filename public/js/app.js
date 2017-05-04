@@ -13,7 +13,9 @@ app.controller('ThroneController', ['$http', function($http){
     }
   })
 
-  /**** USER ****/
+  //=================================
+  // USER SECTION
+  //=================================
 
   // What user will look like after successful log in
   this.user = {
@@ -24,6 +26,9 @@ app.controller('ThroneController', ['$http', function($http){
     username: ""
   }
 
+  //=================================
+  // Get Current User
+  //=================================
   this.getCurrentUser = function() {
     $http({ // Makes HTTP request to server
       method: 'GET',
@@ -33,6 +38,9 @@ app.controller('ThroneController', ['$http', function($http){
     });
   }
 
+  //=================================
+  // Create User
+  //=================================
   this.createUser = function() {
     $http({ // Makes HTTP request to server
       method: 'POST',
@@ -50,6 +58,9 @@ app.controller('ThroneController', ['$http', function($http){
     });
   }
 
+  //=================================
+  // Log user in
+  //=================================
   this.logIn = function() {
     $http({ // Makes HTTP request to server
       method: 'POST',
@@ -64,9 +75,9 @@ app.controller('ThroneController', ['$http', function($http){
     });
   }
 
-//=================================
-// HOUSE SECTION
-//=================================
+  //=================================
+  // HOUSE SECTION
+  //=================================
 
   this.createHouses = function() {
     $http({ // Makes HTTP request to server
@@ -127,12 +138,60 @@ app.controller('ThroneController', ['$http', function($http){
       url: '/houses'
     }).then(function(response) {
       console.log(response);
-      controller.houses = response.data
+      controller.houses = response.data;
     });
   };
   this.getHouses();
 
+  //=================================
+  // CHARACTER SECTION
+  //=================================
+  this.getCharacters = function() {
+    $http({
+      method:'GET',
+      url: 'https://api.got.show/api/characters'
+    }).then(function(response) {
+      controller.characters = response.data;
+    });
+  };
+  this.getCharacters();
+
+  //=================================
+  // Add Character
+  //=================================
+  this.addCharacter = function(newChar, houseId) {
+    $http({ // Makes HTTP request to server
+      method: 'POST',
+      url: '/characters',
+      data: { // Gets turned into req.body
+        name: newChar.name,
+        img: newChar.imageLink,
+        title: newChar.titles,
+        house: newChar.house,
+        books: newChar.books,
+        stat: 0,
+        houseId: houseId
+      }
+    }).then(function(response) {
+      controller.getCurrentUser();
+    });
+  }
+
+  //=================================
+  // Delete Character
+  //=================================
+  this.deleteCharacter = function(charId) {
+    $http({ // Makes HTTP request to server
+      method: 'POST',
+      url: '/characters/' + charId
+    }).then(function(response) {
+      controller.getCurrentUser();
+    });
+  }
+
 }]);
+
+
 
 
 /****** ROUTER ******/
