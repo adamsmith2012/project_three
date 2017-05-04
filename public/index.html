@@ -119,9 +119,9 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
                   <form ng-submit="throne.createUser()">
                      <input ng-model="throne.newUserName" type="text" class="text" value="" placeholder="NAME"/>
                      <!-- <input ng-model="newUserName" type="text" class="text" value="" placeholder="EMAIL"/> -->
-                     <!-- <input ng-model="newUserName" type="text" class="text" value="" placeholder="NAME OF HOUSE"/> -->
+                     <input ng-model="newUserImage" type="text" class="text" value="" placeholder="IMAGE URL"/>
                      <input ng-model="throne.newUserUsername" type="text" class="text" value="" placeholder="USER NAME"/>
-                     <input ng-model="throne.newUserPassword" type="text" class="text" value="" placeholder="PASSWORD"/>
+                     <input ng-model="throne.newUserPassword" type="password" class="text" value="" placeholder="PASSWORD"/>
                      <!-- <textarea value="" placeholder="DESCRIPTION OF HOUSE"></textarea> -->
                      <input type="submit" value="REGISTER">
                   </form> <br><br>
@@ -131,7 +131,7 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
                <div>
                   <form ng-submit="throne.logIn()">
                      <input ng-model="throne.logInUsername" type="text" class="text" value="" placeholder="USER NAME"/>
-                     <input ng-model="throne.logInPassword" type="text" class="text" value="" placeholder="PASSWORD"/>
+                     <input ng-model="throne.logInPassword" type="password" class="text" value="" placeholder="PASSWORD"/>
                      <input type="submit" value="LOG IN">
                   </form>
                </div>
@@ -160,29 +160,6 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
 					<div class="col-md-6 right-grid">
 						<div class="right-top">
 					  <h3>My <span>Houses</span></h3>
-						  <ul>
-                <!-- DISPLAY HOUSES -->
-                                                              <!-- SHOW FORM ON CLICK-->
-						    <li ng-repeat="house in throne.user.houses" ng-click="throne.showEditForm(house._id)">
-                  <ul>
-                    <h3>
-                    {{ house.name }}
-                    <img src="{{ house.img }}" alt="">
-                    {{ house.region }}
-                    </h3>
-                  </ul>
-                  <!-- UPDATE HOUSE FORM-->
-                                                               <!-- BOOLEAN FOR SHOW FORM-->
-                  <form ng-submit="throne.updateHouse(house)" ng-if="throne.editableHousesId === house._id">
-                    <input type="text" ng-model="house.name" placeholder="name"/><br>
-                    <input type="text" ng-model="house.img" placeholder="url"/><br>
-                    <input type="text" ng-model="house.region" placeholder="region"/><br>
-                    <input type="submit" value="Update House"/>
-                  </form>
-                  <!-- DELETE BUTTON -->
-                  <button ng-click="throne.deleteHouse(house._id)">Delete</button>
-                </li>
-						  </ul>
               <section>
                 <h3>Create House</h3>
                 <!-- CREATE NEW HOUSE -->
@@ -203,23 +180,23 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
             <!--End My Account Section-->
             <!-- About Me Section (Hide unless menu is clicked for About Me) -->
 	         <div class="team-section" id="team">
-   				<div class="container">
+   				<div ng-show="throne.user.name" class="container">
       				<div class="team-header">
                      <!---{{user.img}}--->
       					<h3><img src="images/icon1.png"> About <span>Me</span></h3>
 
-      					<p>Hello, {{throne.user.name}}!</p>
+      					<!-- <h3 ng-show="throne.user.name">Hello, {{throne.user.name}}!</h3> -->
    					</div>
    					<div class="team-grids">
-   						<div class="col-md-4 team-grid">
-   							<img src="images/t1.jpg"> <!---{{user.houseImg}}--->
+   						<div class="col-md-4">
+   							<img class="profileImage" src="{{throne.user.image}}">
    						</div>
    						<div class="team-grids">
    							<div class="col-md-8 team-grid">
    								<div class="team-content">
-   									<h4>{{throne.user.name}}</h4><br><br><br><br>
-   									<h3>{{throne.user.title}}</h3>
-                              <h2>{{throne.user.email}}</h2>
+   									<h4>Hello {{throne.user.name}}!</h4><br><br><br><br>
+   									<!-- <h3>{{throne.user.title}}</h3>
+                    <h2>{{throne.user.email}}</h2> -->
    									<br>
    	                        <p></p>
    								</div>
@@ -239,115 +216,83 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
 							<p></p>
 						</div>
 						<div class="house-cards-grids"><!-- Columns 1 -->
-							<div class="col-md-4 pric-grid effect">
+							<div class="col-md-4 pric-grid effect" ng-repeat="house in throne.user.houses" ng-click="throne.showEditForm(house._id)">
 								<div class="pric-top">
-									<span>1</span>
-										<h4>{{house.name}}</h4>
+                  <!-- DISPLAY HOUSES -->
+                  <span><img class="house-image" src="{{ house.img }}" alt=""></span>
+										<h4> {{ house.name}} </h4>
 								</div>
-								<div class="pric-list">
+								<div class="pric-list" >
    								<ul>
-   									<li>{{house.character1}}</li>
-   									<li>{{house.character2}}</li>
-   									<li>{{house.character3}}</li>
-   									<li>{{house.character4}}</li>
-   									<li>{{house.character5}}</li>
+   									<li ng-repeat="char in house.characters">{{char.name}}</li>
    							   </ul>
-   								<p><a href="">View Now</a></p>
+                   <div class="text-center" class="form-group">
+                     <!-- UPDATE HOUSE -->
+                     <form class="house-update-form" ng-submit="throne.updateHouse(house)" ng-if="throne.editableHousesId === house._id">
+                       <input type="text" ng-model="house.name" placeholder="name"/><br>
+                       <input type="text" ng-model="house.img" placeholder="url"/><br>
+                       <input type="text" ng-model="house.region" placeholder="region"/><br>
+                       <input type="submit" value="Update House"/>
+                     </form>
+                     <!-- DELETE HOUSE -->
+                     <button class="house-delete-button"ng-click="throne.deleteHouse(house._id)">Delete</button>
+                   </div>
 								</div>
 							</div>
-							<div class="col-md-4 pric-grid effect"><!-- NG Repeat for N number of houses -->
-								<div class="pric-top">
-									<span>2</span>
-									<h4>{{house.name}}</h4>
-								</div>
-								<div class="pric-list">
-									<ul>
-                    <li>{{house.character1}}</li>
-   									<li>{{house.character2}}</li>
-   									<li>{{house.character3}}</li>
-   									<li>{{house.character4}}</li>
-   									<li>{{house.character5}}</li>
-								    </ul>
-			                   <p><a href="">View Now</a></p>
-								</div>
-						    </div>
-							 <div class="col-md-4 pric-grid effect"><!-- Columns 3 -->
-								<div class="pric-top">
-									 <span>3</span>
-		                      <h4>{{house.name}}</h4>
-								</div>
-								<div class="pric-list">
-									<ul>
-                              <li>{{house.character1}}</li>
-                              <li>{{house.character2}}</li>
-                              <li>{{house.character3}}</li>
-                              <li>{{house.character4}}</li>
-                              <li>{{house.character5}}</li>
-									</ul>
-									<p><a href="">View Now</a></p>
-								</div>
-							 </div>
 							 <div class="clearfix"> </div>
 						  </div>
 				    </div>
 				</div>
-            <!--Portfolio Section (Hide untill House is selected)-->
-            <div class="portfolio-section" id="portfolio">
-					<div class="continer">
-						<div class="portfolio-header">
+        <!--Portfolio Section (Hide untill House is selected)-->
+        <div class="portfolio-section" id="portfolio">
+					<div class="container contact-leftgrid">
+						<div class="text-center">
 							<h3>
-                        <img src="images/img3.png"><span>Loyal</span> Subjects of {{throne.house}}</h3>
+                        <img src="images/img3.png"><span>Search</span> for Characters</h3>
 								<p></p>
 						</div>
+            <!-- character portfolio-section -->
+            <div ng-show="throne.selectedChar" id="portfoliolist">
+              <div class="portfolio card mix_all">
+                <div ng-show="throne.selectedChar.imageLink">
+                  <img src="https://api.got.show{{throne.selectedChar.imageLink}}" class="img-responsive portfolio-image" alt="">
+                </div>
+              </div>
+              <div class="portfolio card mix_all text-center">
+                <h3>{{throne.selectedChar.name}}</h3>
+                <br>
+                <h4>Add to:</h4>
+                <ul class="list-unstyled">
+                  <li ng-click="throne.addCharacter(throne.selectedChar, house._id)" class="char" ng-repeat="house in throne.user.houses | orderBy: 'name'"><h5>{{house.name}}</h5></li>
+                </ul>
+              </div>
+              <div class="clearfix"> </div>
+            </div>
+            <form ng-submit="throne.getCharacters()">
+              <input type="text" ng-model="throne.charSearchName" placeholder="Search"/><br>
+              <!-- <input type="submit" value="Search"/> -->
+            </form>
+            <h5 class="text-center">Click a Character to Add to a House</h5><br>
+            <div class="row characters">
+              <div ng-click="throne.selectedChar = char" class="col-sm-2 char" ng-repeat="char in throne.characters | filter:throne.charSearchName | orderBy: 'name'">{{char.name}}</div>
+            </div>
                   <!-- character portfolio-section -->
-	               <div id="portfoliolist">
+	               <!-- <div id="portfoliolist">
       					<div class="portfolio card mix_all" data-cat="card" style="display: inline-block; opacity: 1;">
       						<div class="portfolio-wrapper grid_box">
       							<a href="images/1.jpg" class="swipebox"  title="Image Title">
-      								<img src="images/1.jpg" class="img-responsive" alt=""> <!-- Image from {{throne.characters}} -->
-      								<span class="zoom-icon"></span> </a></div>
-                     </div>
-      					<div class="portfolio app mix_all " data-cat="app" style="display: inline-block; opacity: 1; ">
-      						<div class="portfolio-wrapper grid_box">
-      							 <a href="images/2.jpg" class="swipebox"  title="Image Title"> <img src="images/2.jpg" class="img-responsive" alt=""><span class="zoom-icon"></span> </a><!-- Image from {{throne.characters}} -->
-      		                </div>
-      					</div>
-      					<div class="portfolio card mix_all" data-cat="card" style="display: inline-block; opacity: 1;">
-      						<div class="portfolio-wrapper grid_box">
-      							<a href="images/3.jpg" class="swipebox"  title="Image Title"> <img src="images/3.jpg" class="img-responsive" alt=""><span class="zoom-icon"></span> </a><!-- Image from {{throne.characters}} -->
-      		                </div>
-      					</div>
-      					<div class="portfolio app mix_all" data-cat="app" style="display: inline-block; opacity: 1;">
-      						<div class="portfolio-wrapper grid_box">
-      							<a href="images/4.jpg" class="swipebox"  title="Image Title"> <img src="images/4.jpg" class="img-responsive" alt=""><span class="zoom-icon"></span> </a><!-- Image from {{throne.characters}} -->
-      		                </div>
-      					</div>
-      					<div class="portfolio card mix_all" data-cat="card" style="display: inline-block; opacity: 1;">
-      						<div class="portfolio-wrapper grid_box">
-      							<a href="images/5.jpg" class="swipebox"  title="Image Title"> <img src="images/5.jpg" class="img-responsive" alt=""><span class="zoom-icon"></span> </a><!-- Image from {{throne.characters}} -->
-      		                </div>
-      					</div>
-      					<div class="portfolio icon mix_all" data-cat="icon" style="display: inline-block; opacity: 1;">
-      						<div class="portfolio-wrapper grid_box">
-      							<a href="images/6.jpg" class="swipebox"  title="Image Title"> <img src="images/6.jpg" class="img-responsive" alt=""><span class="zoom-icon"></span> </a><!-- Image from {{throne.characters}} -->
-      		                </div>
-      					</div>
-      					<div class="portfolio card mix_all" data-cat=" web" style="display: inline-block; opacity: 1;">
-      						<div class="portfolio-wrapper grid_box">
-      							<a href="images/7.jpg" class="swipebox"  title="Image Title"> <img src="images/7.jpg" class="img-responsive" alt=""><span class="zoom-icon"></span> </a><!-- Image from {{throne.characters}} -->
-      		                </div>
-      					</div>
-      					<div class="portfolio card mix_all" data-cat="icon" style="display: inline-block; opacity: 1;">
-      						<div class="portfolio-wrapper grid_box">
-      							<a href="images/8.jpg" class="swipebox"  title="Image Title"> <img src="images/8.jpg" class="img-responsive" alt=""><span class="zoom-icon"></span> </a><!-- Image from {{throne.characters}} -->
-      		                </div>
-      					</div>
-					      <div class="clearfix"> </div>
+      								<img src="images/1.jpg" class="img-responsive" alt=""> -->
+      								<!-- <span class="zoom-icon"></span> </a></div>
+                     </div> -->
+
+
+					      <!-- <div class="clearfix"> </div>
 	               </div>
 					   <div class="clearfix"> </div>
-               </div>
+               </div> -->
                <!--End character portfolio section-->
             </div>
+          </div>
             <!-- End Portfolio Section  -->
 			<div class="footer-section">
 								<div class="container">
