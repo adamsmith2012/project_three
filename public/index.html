@@ -239,9 +239,9 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
 							<p></p>
 						</div>
 						<div class="house-cards-grids"><!-- Columns 1 -->
-							<div class="col-md-4 pric-grid effect" ng-repeat="house in throne.user.houses">
+							<div class="col-md-4 pric-grid effect" ng-repeat="house in throne.user.houses" ng-click="throne.showEditForm(house._id)">
 								<div class="pric-top">
-
+                  <!-- DISPLAY HOUSES -->
                   <span><img class="house-image" src="{{ house.img }}" alt=""></span>
 										<h4> {{ house.name}} </h4>
 								</div>
@@ -253,7 +253,17 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
    									<li>{{house.character4}}</li>
    									<li>{{house.character5}}</li>
    							   </ul>
-   								<p><a href="">View Now</a></p>
+                   <div class="text-center">
+                     <!-- UPDATE HOUSE -->
+                     <form class="house-update-form" ng-submit="throne.updateHouse(house)" ng-if="throne.editableHousesId === house._id">
+                       <input type="text" ng-model="house.name" placeholder="name"/><br>
+                       <input type="text" ng-model="house.img" placeholder="url"/><br>
+                       <input type="text" ng-model="house.region" placeholder="region"/><br>
+                       <input type="submit" value="Update House"/>
+                     </form>
+                     <!-- DELETE HOUSE -->
+                     <button class="house-delete-button"ng-click="throne.deleteHouse(house._id)">Delete</button>
+                   </div>
 								</div>
 							</div>
 							<div class="col-md-4 pric-grid effect"><!-- NG Repeat for N number of houses -->

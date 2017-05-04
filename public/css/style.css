@@ -9,6 +9,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
   height: 50px;
 }
 
+.house-update-form{
+  margin-top: 10px;
+}
+
+.house-delete-button {
+  margin-top: 10px;
+}
+
 body a{
     transition:0.5s all;
 	-webkit-transition:0.5s all;
