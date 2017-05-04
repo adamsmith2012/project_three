@@ -37,7 +37,7 @@ ul{
 }
 body{
 
-   background-color: #1a1a1a;
+  background-color: #1a1a1a;
 	padding:0 0;
 	margin:0 0;
 	font-family: 'Montserrat', sans-serif;
@@ -315,15 +315,36 @@ p.lable1 {
   color: #464646;
  }
 /*-- portfolio --*/
+.characters {
+  height: 300px;
+  overflow: auto;
+}
+
+.char {
+  margin: 5px;
+  cursor: pointer;
+}
+
+.char:hover {
+  color: #c10505;
+}
+
+.portfolio-image {
+  box-sizing: border-box;
+  margin: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px white;
+}
+
 .portfolio-section{
 	padding-top:5em;
+  color: #e2e2e2;
 }
 #portfoliolist .portfolio {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-o-box-sizing: border-box;
 	width: 25%;
-	display:none;
 	float:left;
 	overflow:hidden;
 	margin: 0;
@@ -340,7 +361,7 @@ div#portfoliolist {
 	padding:0em 0em;
 }
 .portfolio img {
-	width:100%;
+	width:80%;
 	transition: all 300ms!important;
 	-webkit-transition: all 300ms!important;
 	-moz-transition: all 300ms!important;
