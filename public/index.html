@@ -317,9 +317,10 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
               <div class="clearfix"> </div>
             </div>
             <form ng-submit="throne.getCharacters()">
-              <input type="text" ng-model="throne.charSearchName" placeholder="Sort"/><br>
+              <input type="text" ng-model="throne.charSearchName" placeholder="Search"/><br>
               <!-- <input type="submit" value="Search"/> -->
             </form>
+            <h5 class="text-center">Click a Character to Add to a House</h5><br>
             <div class="row characters">
               <div ng-click="throne.selectedChar = char" class="col-sm-2 char" ng-repeat="char in throne.characters | filter:throne.charSearchName | orderBy: 'name'">{{char.name}}</div>
             </div>

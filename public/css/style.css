@@ -316,8 +316,13 @@ p.lable1 {
  }
 /*-- portfolio --*/
 .characters {
+  padding: 5px;
   height: 300px;
   overflow: auto;
+  border-style: inset;
+  border: 2px solid #e2e2e2;
+  border-radius: 5px;
+  box-sizing: border-box;
 }
 
 .char {
