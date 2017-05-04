@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 
 /****** CHARACTER SCHEMA ******/
 var charSchema = mongoose.Schema({
-  name: {type: String, required: true, unique: true},
+  name: {type: String, required: true},
   img: String,
   title: String,
   house: String,
