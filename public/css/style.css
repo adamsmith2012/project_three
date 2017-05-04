@@ -50,8 +50,12 @@ body{
 }
 .header-top {
   padding: 6em 0;
-
  }
+
+.profileImage {
+  height: 200px;
+}
+
 .logo{
 	float: left;
 }
