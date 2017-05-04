@@ -119,9 +119,9 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
                   <form ng-submit="throne.createUser()">
                      <input ng-model="throne.newUserName" type="text" class="text" value="" placeholder="NAME"/>
                      <!-- <input ng-model="newUserName" type="text" class="text" value="" placeholder="EMAIL"/> -->
-                     <!-- <input ng-model="newUserName" type="text" class="text" value="" placeholder="NAME OF HOUSE"/> -->
+                     <input ng-model="newUserImage" type="text" class="text" value="" placeholder="IMAGE URL"/>
                      <input ng-model="throne.newUserUsername" type="text" class="text" value="" placeholder="USER NAME"/>
-                     <input ng-model="throne.newUserPassword" type="text" class="text" value="" placeholder="PASSWORD"/>
+                     <input ng-model="throne.newUserPassword" type="password" class="text" value="" placeholder="PASSWORD"/>
                      <!-- <textarea value="" placeholder="DESCRIPTION OF HOUSE"></textarea> -->
                      <input type="submit" value="REGISTER">
                   </form> <br><br>
@@ -131,7 +131,7 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
                <div>
                   <form ng-submit="throne.logIn()">
                      <input ng-model="throne.logInUsername" type="text" class="text" value="" placeholder="USER NAME"/>
-                     <input ng-model="throne.logInPassword" type="text" class="text" value="" placeholder="PASSWORD"/>
+                     <input ng-model="throne.logInPassword" type="password" class="text" value="" placeholder="PASSWORD"/>
                      <input type="submit" value="LOG IN">
                   </form>
                </div>
@@ -180,23 +180,23 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
             <!--End My Account Section-->
             <!-- About Me Section (Hide unless menu is clicked for About Me) -->
 	         <div class="team-section" id="team">
-   				<div class="container">
+   				<div ng-show="throne.user.name" class="container">
       				<div class="team-header">
                      <!---{{user.img}}--->
       					<h3><img src="images/icon1.png"> About <span>Me</span></h3>
 
-      					<p>Hello, {{throne.user.name}}!</p>
+      					<!-- <h3 ng-show="throne.user.name">Hello, {{throne.user.name}}!</h3> -->
    					</div>
    					<div class="team-grids">
-   						<div class="col-md-4 team-grid">
-   							<img src="images/t1.jpg"> <!---{{user.houseImg}}--->
+   						<div class="col-md-4">
+   							<img class="profileImage" src="{{throne.user.image}}">
    						</div>
    						<div class="team-grids">
    							<div class="col-md-8 team-grid">
    								<div class="team-content">
-   									<h4>{{throne.user.name}}</h4><br><br><br><br>
-   									<h3>{{throne.user.title}}</h3>
-                              <h2>{{throne.user.email}}</h2>
+   									<h4>Hello {{throne.user.name}}!</h4><br><br><br><br>
+   									<!-- <h3>{{throne.user.title}}</h3>
+                    <h2>{{throne.user.email}}</h2> -->
    									<br>
    	                        <p></p>
    								</div>
@@ -254,7 +254,7 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
             <!-- character portfolio-section -->
             <div ng-show="throne.selectedChar" id="portfoliolist">
               <div class="portfolio card mix_all">
-                <div class="">
+                <div ng-show="throne.selectedChar.imageLink">
                   <img src="https://api.got.show{{throne.selectedChar.imageLink}}" class="img-responsive portfolio-image" alt="">
                 </div>
               </div>
@@ -269,9 +269,10 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
               <div class="clearfix"> </div>
             </div>
             <form ng-submit="throne.getCharacters()">
-              <input type="text" ng-model="throne.charSearchName" placeholder="Sort"/><br>
+              <input type="text" ng-model="throne.charSearchName" placeholder="Search"/><br>
               <!-- <input type="submit" value="Search"/> -->
             </form>
+            <h5 class="text-center">Click a Character to Add to a House</h5><br>
             <div class="row characters">
               <div ng-click="throne.selectedChar = char" class="col-sm-2 char" ng-repeat="char in throne.characters | filter:throne.charSearchName | orderBy: 'name'">{{char.name}}</div>
             </div>

@@ -47,6 +47,7 @@ app.controller('ThroneController', ['$http', function($http){
       url: '/users',
       data: { // Gets turned into req.body
         name: controller.newUserName,
+        image: controller.newUserImage,
         username: controller.newUserUsername,
         password: controller.newUserPassword
       }

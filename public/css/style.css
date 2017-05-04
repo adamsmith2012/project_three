@@ -62,8 +62,12 @@ body{
 }
 .header-top {
   padding: 6em 0;
-
  }
+
+.profileImage {
+  height: 200px;
+}
+
 .logo{
 	float: left;
 }
@@ -328,8 +332,13 @@ p.lable1 {
  }
 /*-- portfolio --*/
 .characters {
+  padding: 5px;
   height: 300px;
   overflow: auto;
+  border-style: inset;
+  border: 2px solid #e2e2e2;
+  border-radius: 5px;
+  box-sizing: border-box;
 }
 
 .char {
@@ -868,7 +877,7 @@ div#portfoliolist {
     margin-bottom: 2.2em;
 }
 
-.contact-leftgrid  input[type="text"]{
+.contact-leftgrid  input[type="text"],input[type="password"]{
 	  width: 100%;
   padding: 15px 24px;
   border: 1px solid #969696;
