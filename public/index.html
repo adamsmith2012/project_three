@@ -224,11 +224,7 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
 								</div>
 								<div class="pric-list" >
    								<ul>
-   									<li>{{house.character1}}</li>
-   									<li>{{house.character2}}</li>
-   									<li>{{house.character3}}</li>
-   									<li>{{house.character4}}</li>
-   									<li>{{house.character5}}</li>
+   									<li ng-repeat="char in house.characters">{{char.name}}</li>
    							   </ul>
                    <div class="text-center" class="form-group">
                      <!-- UPDATE HOUSE -->
