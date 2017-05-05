@@ -58,16 +58,28 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
       				<a href="index.html"><img class="hImg" src="images/headerImage.png"></a>
    				</div>
                <!--Menu-->
-   				<div class="top-menu">
+               <div ng-show="!throne.user.name" class="top-menu">
    					<span class="menu"> </span>
 
       				<ul>
       					<li><a href="#home" class="active" class="scroll">Home</a></li>
-   						<li><a href="#aboutus" class="scroll">My House</a></li>
    						<li><a href="#portfolio" class="scroll">Character List</a></li>
-   				 	 	<li><a href="#team" class="scroll">About Me</a></li>
+   					   <li><a href="#login" class="scroll">Log In/Register</a></li>
+   						</ul>
+
+   				</div>
+   				<div ng-show="throne.user.name" class="top-menu">
+   					<span class="menu"> </span>
+
+      				<ul>
+      					<li><a href="#home" class="active" class="scroll">Home</a></li>
+   						<li><a href="#myhouse" class="scroll">My House</a></li>
+   						<li><a href="#portfolio" class="scroll">Character List</a></li>
+   				 	 	<li><a href="#aboutme" class="scroll">About Me</a></li>
    				 		<li><a href="#family" class="scroll">GoT Family</a></li>
-   					   <li><a href="#login" class="scroll">Log In</a></li>
+   					   <li><form class="contact-leftgrid" action="/sessions?_method=DELETE" method="POST">
+                        <input type="submit" value="Logout"/>
+                    </form><li>
    						</ul>
 
    				</div>
@@ -107,7 +119,8 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
          <!--End Slider Section-->
       </div>
       <!--Contact Section-->
-      <div class="contact-section" id="login">
+      <a name="login"></a>
+      <div ng-hide="throne.user.name" class="contact-section">
          <div class="contact-grids">
             <div class="col-md-6 contact-leftgrid">
                <!--Title Contact Section-->
@@ -115,7 +128,7 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
                <p>Please enter all your information to register for your land with-holdings.</p>
                <!--End Title Contact Section-->
                <!--Register Section (Hide when user hit Log In)-->
-               <div>
+               <div >
                   <form ng-submit="throne.createUser()">
                      <input ng-model="throne.newUserName" type="text" class="text" value="" placeholder="NAME"/>
                      <!-- <input ng-model="newUserName" type="text" class="text" value="" placeholder="EMAIL"/> -->
@@ -127,9 +140,10 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
                   </form> <br><br>
                </div>
                <!--End Register Section-->
+               <h3><img src="images/icon7.png"> I already <span>brandish</span> a Sword</h3>
                <!--Log In Section--->
                <div>
-                  <form ng-submit="throne.logIn()">
+                  <form ng-submit="throne.logIn()" onsubmit="document.location.href='index.html#aboutme'" >
                      <input ng-model="throne.logInUsername" type="text" class="text" value="" placeholder="USER NAME"/>
                      <input ng-model="throne.logInPassword" type="password" class="text" value="" placeholder="PASSWORD"/>
                      <input type="submit" value="LOG IN">
@@ -146,9 +160,39 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
             </div>
          </div>
       <!--End Contact Section-->
-      <!--Content Section-->
-      <div class="content">
-         <div class="about-section" id="aboutus">
+      <!-- About Me Section (Hide unless menu is clicked for About Me) -->
+      <a name="aboutme"></a>
+      <div ng-hide="!throne.user.name" class="team-section">
+         <div  ng-show="throne.user.name" class="container">
+            <div class="team-header">
+               <!---{{user.img}}--->
+               <h3><img src="images/img3.png"> About <span>Me</span></h3>
+
+               <!-- <h3 ng-show="throne.user.name">Hello, {{throne.user.name}}!</h3> -->
+            </div>
+            <div class="team-grids">
+               <div class="col-md-4">
+                  <img class="profileImage" src="{{throne.user.image}}">
+               </div>
+               <div class="team-grids">
+                  <div class="col-md-8 team-grid">
+                     <div class="team-content">
+                        <h4>Hello {{throne.user.name}}!</h4><br><br><br><br>
+                        <!-- <h3>{{throne.user.title}}</h3>
+              <h2>{{throne.user.email}}</h2> -->
+                        <br>
+                        <p></p>
+                     </div>
+                  </div>
+              </div>
+              <div class="clearfix"> </div>
+            </div>
+         </div>
+      </div>
+      <!-- End About Me Section -->
+      <!--My House Section-->
+         <a name="myhouse"></a>
+         <div ng-hide="!throne.user.name" class="about-section">
             <!--My House Section-->
             <div class="about-grids">
                <div class="col-md-6 left-grid">
@@ -163,12 +207,17 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
               <section>
                 <h3>Create House</h3>
                 <!-- CREATE NEW HOUSE -->
-                <form ng-submit="throne.createHouses()">
-                  <input type="text" ng-model="throne.name" placeholder="Name"/><br>
-                  <input type="text" ng-model="throne.img" placeholder="Url"/><br>
-                  <input type="text" ng-model="throne.region" placeholder="Region"/><br>
-                  <input type="submit" value="Create House">
+                <form onsubmit="document.location.href='index.html#family'" id="myForm" class="contact-leftgrid" ng-submit="throne.createHouses()">
+                  <input type="text" ng-model="throne.name" placeholder="HOUSE NAME"/><br>
+                  <input type="text" ng-model="throne.img" placeholder="IMAGE URL"/><br>
+                  <input type="text" ng-model="throne.region" placeholder="REGION"/><br>
+                  <input type="submit" value="Create House" onclick="myFunction()">
                 </form>
+                <script>
+                  function myFunction() {
+                     document.getElementById("myForm").reset();
+                  }
+                </script>
               </section>
               <!-- House Partial | Include -->
              <!-- <section ng-include="'partials/house.html'"></section> -->
@@ -177,38 +226,11 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
 						<div class="clearfix"> </div>
 						</div>
 				</div>
-            <!--End My Account Section-->
-            <!-- About Me Section (Hide unless menu is clicked for About Me) -->
-	         <div class="team-section" id="team">
-   				<div ng-show="throne.user.name" class="container">
-      				<div class="team-header">
-                     <!---{{user.img}}--->
-      					<h3><img src="images/icon1.png"> About <span>Me</span></h3>
+            <!--End My House Section-->
 
-      					<!-- <h3 ng-show="throne.user.name">Hello, {{throne.user.name}}!</h3> -->
-   					</div>
-   					<div class="team-grids">
-   						<div class="col-md-4">
-   							<img class="profileImage" src="{{throne.user.image}}">
-   						</div>
-   						<div class="team-grids">
-   							<div class="col-md-8 team-grid">
-   								<div class="team-content">
-   									<h4>Hello {{throne.user.name}}!</h4><br><br><br><br>
-   									<!-- <h3>{{throne.user.title}}</h3>
-                    <h2>{{throne.user.email}}</h2> -->
-   									<br>
-   	                        <p></p>
-   								</div>
-   				         </div>
-   					  </div>
-   			        <div class="clearfix"> </div>
-   				   </div>
-   				</div>
-            </div>
-            <!-- End About Me Section -->
             <!---House of Cards Sections--->
-				<div class="house-cards-section" id="family">
+            <a name="family"></a>
+				<div ng-hide="!throne.user.name" class="house-cards-section">
 					<div class="container">
 						<div class="house-cards-header">
                      <h3><img src="images/img3.png"> GoT <span>Family</span> <h4>Game of Thrones Houses</h4
@@ -244,7 +266,8 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
 				    </div>
 				</div>
         <!--Portfolio Section (Hide untill House is selected)-->
-        <div class="portfolio-section" id="portfolio">
+        <a name="portfolio"></a>
+        <div class="portfolio-section">
 					<div class="container contact-leftgrid">
 						<div class="text-center">
 							<h3>
@@ -261,7 +284,7 @@ http://w3layouts.com/preview/?l=/fixduty-a-corporate-business-flat-responsive-we
               <div class="portfolio card mix_all text-center">
                 <h3>{{throne.selectedChar.name}}</h3>
                 <br>
-                <h4>Add to:</h4>
+                <h4 ng-show="throne.user.name">Add to:</h4>
                 <ul class="list-unstyled">
                   <li ng-click="throne.addCharacter(throne.selectedChar, house._id)" class="char" ng-repeat="house in throne.user.houses | orderBy: 'name'"><h5>{{house.name}}</h5></li>
                 </ul>
