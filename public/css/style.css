@@ -600,11 +600,13 @@ div#portfoliolist {
 /******************/
 .team-section {
   padding: 6em 0;
+  background: url("../images/kings_landing.jpg") no-repeat;
+  background-size: cover;
+  min-height: 600px;
 }
 .team-header {
  width: 37%;
-  margin: 0 auto 3.5em;
-
+ margin: 0 auto 3.5em;
 }
 .team-header h3 {
   font-size: 2.5em;
@@ -643,7 +645,6 @@ div#portfoliolist {
   color: white;
  }
 .team-grid img {
-
   border: 5px solid #C10505;
 }
 .team-grid {
